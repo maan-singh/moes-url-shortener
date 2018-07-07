@@ -1,0 +1,5 @@
+{
+  "name": "Moe's URL Shortener",
+  "description": "URL Shortener Project",
+  "keywords": ["node", "express", "static"]
+}
