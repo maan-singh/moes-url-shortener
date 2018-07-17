@@ -37,12 +37,12 @@ app.use(express.static('assets'));
 
 // fire controllers
 //urlShortenerController(app);
-app.get('/moesurl', function(req, res){
+app.get('/', function(req, res){
   // route to serve up the homepage (index.html)
   res.sendFile('index.html', {root: './'});
 });
 
-app.post('/moesurl', urlencodedParser, function(req, res){
+app.post('/', urlencodedParser, function(req, res){
   console.log(req.body);
 
   //var dataObj = {data: req.body}
@@ -118,7 +118,7 @@ app.get('/:encoded_id', function(req, res){
       res.redirect(doc.long_url);
     } else {
       // nothing found, take 'em home
-      res.redirect(config.webhost + 'moesurl');
+      res.redirect(config.webhost);
     }
   });
 
