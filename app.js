@@ -23,7 +23,8 @@ var Url = require('./models/url');
 //extra ^
 
 // connect to database (extra)
-mongoose.connect('mongodb://' + config.db.host + '/' + config.db.name, {autoIndex: false});
+//mongoose.connect('mongodb://' + config.db.host + '/' + config.db.name, {autoIndex: false});
+mongoose.connect('mongodb://test:test123@ds139841.mlab.com:39841/urls')
 
 // urlencodedParser
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -75,7 +76,7 @@ Url.findOne({long_url: urlLong}, function(err, doc){
   if (doc){
   // URL has already been shortened
   // base 58 encode the unique _id of that document and construct the short URL
-  urlShort = config.webhost + base58.encode(doc._id);
+  urlShort = config.webhost + base58.encode(doc._number);
 
   // since the document exists, we return it without creating a new entry
   //res.send({'urlShort': urlShort});
@@ -95,7 +96,7 @@ Url.findOne({long_url: urlLong}, function(err, doc){
     }
 
     // construct the short url
-    urlShort = config.webhost + base58.encode(newUrl._id);
+    urlShort = config.webhost + base58.encode(newUrl._number);
 
     //res.send({'urlShort': shortUrl});
 
@@ -112,7 +113,7 @@ app.get('/:encoded_id', function(req, res){
   var id = base58.decode(base58Id);
 
   // check if url already exists in database
-  Url.findOne({_id: id}, function (err, doc){
+  Url.findOne({_number: id}, function (err, doc){
     if (doc) {
       // found an entry in the DB, redirect the user to their destination
       res.redirect(doc.long_url);
