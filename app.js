@@ -2,7 +2,7 @@
 
 
 var express = require('express');
-var urlShortenerController = require('./controllers/urlShortenerController');
+//var urlShortenerController = require('./controllers/urlShortenerController');
 
 //copied from controller
 var bodyParser = require('body-parser');
