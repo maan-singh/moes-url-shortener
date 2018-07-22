@@ -5,7 +5,7 @@ config.db = {};
 // i.e.: http://localhost:3000/3Ys
 //config.webhost = 'http://localhost:3000/';
 //config.webhost = 'https://maan-singh.herokuapp.com/';
-config.webhost = 'moes.xyz/';
+config.webhost = 'www.moes.xyz/';
 
 // your MongoDB host and database name
 config.db.host = 'localhost';
